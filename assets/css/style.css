@@ -1,0 +1,33 @@
+
+body {
+font-family: 'Segoe UI', Tahoma, sans-serif;
+background-color: #f4f6f9;
+}
+
+.navbar-custom {
+background: linear-gradient(90deg, #1e3c72, #2a5298);
+}
+
+.footer-custom {
+background-color: #2a2f45;
+}
+
+.card {
+border: none;
+border-radius: 12px;
+transition: 0.3s ease;
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.btn-primary-custom {
+background-color: #2a5298;
+border: none;
+}
+
+.btn-primary-custom:hover {
+background-color: #1e3c72;
+}
