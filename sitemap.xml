@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
 <url>
 <loc>https://sadashib2025.github.io/Freetechsupport/</loc>
 <priority>1.00</priority>
 </url>
+
+<url>
+<loc>https://sadashib2025.github.io/Freetechsupport/tools/image-compressor.html</loc>
+</url>
+
+<url>
+<loc>https://sadashib2025.github.io/Freetechsupport/tools/jpg-to-pdf.html</loc>
+</url>
+
+<url>
+<loc>https://sadashib2025.github.io/Freetechsupport/tools/word-counter.html</loc>
+</url>
+
 </urlset>
