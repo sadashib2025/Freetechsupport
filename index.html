@@ -1,105 +1,143 @@
-<section class="py-5 bg-light">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FreeTechSupport - Free Online Tools</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f2f2f2;
+margin:0;
+padding:0;
+text-align:center;
+}
+
+header{
+background:#2d89ef;
+color:white;
+padding:20px;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+text-decoration:underline;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:30px;
+}
+
+.tools-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.tool-card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.15);
+}
+
+.tool-card h3{
+margin-top:0;
+}
+
+.tool-card a{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#2d89ef;
+color:white;
+text-decoration:none;
+border-radius:5px;
+}
+
+.tool-card a:hover{
+background:#1b5fa7;
+}
+
+footer{
+margin-top:40px;
+padding:20px;
+background:#eee;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>FreeTechSupport</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+</header>
 
 <div class="container">
 
-<h2 class="text-center mb-5">Free Tools</h2>
+<h2>Free Online Tools</h2>
+<p>Simple, fast and free utilities for everyday tasks.</p>
 
-<div class="row g-4">
+<div class="tools-grid">
 
-<!-- Image Compressor -->
-
-<div class="col-md-3">
-
-<div class="card h-100 shadow-sm border-0">
-
-<div class="card-body text-center">
-
-<h5 class="card-title">Image Compressor</h5>
-
-<p class="text-muted">
-Compress JPG and PNG images quickly.
-</p>
-
-<a href="image-compressor.html" class="btn btn-primary">
-Open Tool
-</a>
-
-</div>
+<div class="tool-card">
+<h3>Image Compressor</h3>
+<p>Compress JPG images quickly without losing quality.</p>
+<a href="tools/image-compressor.html">Open Tool</a>
 </div>
 
+<div class="tool-card">
+<h3>Batch JPG Compressor</h3>
+<p>Compress multiple JPG images and download as ZIP.</p>
+<a href="tools/batch-converter.html">Open Tool</a>
 </div>
 
-<!-- Batch Image Compressor -->
-
-<div class="col-md-3">
-
-<div class="card h-100 shadow-sm border-0">
-
-<div class="card-body text-center">
-
-<h5 class="card-title">Batch Image Compressor</h5>
-
-<p class="text-muted">
-Compress multiple JPG images and download ZIP.
-</p>
-
-<a href="batch-converter.html" class="btn btn-primary">
-Open Tool
-</a>
-
-</div>
+<div class="tool-card">
+<h3>JPG to PDF Converter</h3>
+<p>Convert multiple JPG images into a single PDF.</p>
+<a href="tools/jpg-to-pdf.html">Open Tool</a>
 </div>
 
-</div>
-
-<!-- JPG to PDF -->
-
-<div class="col-md-3">
-
-<div class="card h-100 shadow-sm border-0">
-
-<div class="card-body text-center">
-
-<h5 class="card-title">JPG to PDF</h5>
-
-<p class="text-muted">
-Convert JPG images into a single PDF file.
-</p>
-
-<a href="tools/jpg-to-pdf.html" class="btn btn-primary">
-Use Tool
-</a>
-
-</div>
-</div>
-
-</div>
-
-<!-- Word Counter -->
-
-<div class="col-md-3">
-
-<div class="card h-100 shadow-sm border-0">
-
-<div class="card-body text-center">
-
-<h5 class="card-title">Word Counter</h5>
-
-<p class="text-muted">
-Count words and characters instantly.
-</p>
-
-<a href="tools/word-counter.html" class="btn btn-primary">
-Use Tool
-</a>
-
-</div>
+<div class="tool-card">
+<h3>Word Counter</h3>
+<p>Count words, characters and sentences instantly.</p>
+<a href="tools/word-counter.html">Open Tool</a>
 </div>
 
 </div>
 
 </div>
 
-</div>
+<footer>
 
-</section>
+<p>© 2026 FreeTechSupport | Created by Sadashib Nath Sen</p>
+
+</footer>
+
+</body>
+</html>
