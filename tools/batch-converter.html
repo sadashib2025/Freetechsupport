@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Batch JPG Image Compressor | FreeTechSupport</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+margin:0;
+padding:0;
+text-align:center;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+background:white;
+padding:25px;
+margin-top:40px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.15);
+}
+
+h2{
+margin-bottom:10px;
+}
+
+.dropzone{
+border:2px dashed #888;
+padding:40px;
+margin-top:20px;
+border-radius:10px;
+background:#fafafa;
+cursor:pointer;
+}
+
+.dropzone:hover{
+background:#f0f0f0;
+}
+
+table{
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
+}
+
+table th, table td{
+padding:8px;
+border-bottom:1px solid #ddd;
+}
+
+button{
+padding:12px 25px;
+margin-top:20px;
+background:#2d89ef;
+border:none;
+color:white;
+font-size:16px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1b5fa7;
+}
+
+#status{
+margin-top:15px;
+font-weight:bold;
+}
+
+.footer{
+margin-top:30px;
+font-size:13px;
+color:#777;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>FreeTechSupport</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="image-compressor.html">Image Compressor</a>
+<a href="batch-converter.html">Batch Converter</a>
+</nav>
+
+</header>
+
+<div class="container">
+
+<h2>Batch JPG Image Compressor</h2>
+<p>Upload multiple JPG images and compress them instantly.</p>
+
+<input type="file" id="fileInput" accept="image/jpeg" multiple hidden>
+
+<div class="dropzone" onclick="document.getElementById('fileInput').click()">
+Drag & Drop Images Here<br>or Click to Upload
+</div>
+
+<br>
+
+<label>Compression Quality (0.1 – 1)</label>
+<br>
+<input type="number" id="quality" value="0.6" min="0.1" max="1" step="0.1">
+
+<table id="resultTable">
+
+<thead>
+<tr>
+<th>File</th>
+<th>Original Size</th>
+<th>Compressed Size</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+<button onclick="compressImages()">Compress & Download ZIP</button>
+
+<p id="status"></p>
+
+<div class="footer">
+Free Image Tool | Freetechsupport
+</div>
+
+</div>
+
+<script>
+
+let filesList=[];
+
+document.getElementById("fileInput").addEventListener("change",function(e){
+filesList=[...e.target.files];
+displayFiles();
+});
+
+function displayFiles(){
+
+let tbody=document.querySelector("#resultTable tbody");
+tbody.innerHTML="";
+
+filesList.forEach(file=>{
+
+let row=document.createElement("tr");
+
+row.innerHTML=
+"<td>"+file.name+"</td>"+
+"<td>"+(file.size/1024).toFixed(1)+" KB</td>"+
+"<td>Pending</td>";
+
+tbody.appendChild(row);
+
+});
+
+}
+
+async function compressImages(){
+
+if(filesList.length===0){
+alert("Please upload images first");
+return;
+}
+
+let quality=parseFloat(document.getElementById("quality").value);
+let zip=new JSZip();
+let rows=document.querySelectorAll("#resultTable tbody tr");
+
+document.getElementById("status").innerText="Compressing images...";
+
+for(let i=0;i<filesList.length;i++){
+
+let file=filesList[i];
+
+let img=await loadImage(file);
+
+let canvas=document.createElement("canvas");
+canvas.width=img.width;
+canvas.height=img.height;
+
+let ctx=canvas.getContext("2d");
+ctx.drawImage(img,0,0);
+
+let blob=await new Promise(resolve =>
+canvas.toBlob(resolve,"image/jpeg",quality)
+);
+
+zip.file("compressed_"+file.name,blob);
+
+rows[i].children[2].innerText=(blob.size/1024).toFixed(1)+" KB";
+
+}
+
+document.getElementById("status").innerText="Creating ZIP file...";
+
+zip.generateAsync({type:"blob"}).then(function(content){
+
+let link=document.createElement("a");
+link.href=URL.createObjectURL(content);
+link.download="compressed_images.zip";
+link.click();
+
+document.getElementById("status").innerText="Download complete";
+
+});
+
+}
+
+function loadImage(file){
+
+return new Promise(resolve=>{
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+
+let img=new Image();
+img.src=e.target.result;
+
+img.onload=function(){
+resolve(img);
+};
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
